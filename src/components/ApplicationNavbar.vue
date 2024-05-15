@@ -14,7 +14,8 @@
             ></v-img>
           </template>
           <template v-slot:prepend>
-            <v-app-bar-nav-icon @click="dothis()"> </v-app-bar-nav-icon>
+            <v-app-bar-nav-icon @click="dothis()" v-if="$vuetify.display.smAndDown"> </v-app-bar-nav-icon>
+            <p v-else> Fort</p>
           <v-app-bar-title class="text-body-2 w-25">Prack and Daughters Pharmacy</v-app-bar-title>
           </template>
 
@@ -24,9 +25,8 @@
                     <v-icon>mdi-cart</v-icon>
 
                 </v-btn>
-                <p class="text-weight-thin text-body-2 text-h6">
+                <p class="text-weight-thin text-body-2 text-h6 " v-if="!displayStore.smAndDown">
                     GHS 150
-                  {{ drawerStore.drawer }}
                 </p>
                
                 <v-btn icon>
@@ -34,7 +34,7 @@
         </v-btn >
 
             </div>
-
+            {{ displayStore.changeView }}
            
           </template>
           
@@ -50,12 +50,16 @@
 <script setup>
 import { ref } from 'vue';
 import {useDrawerStore} from '@/stores/drawerStore'
+import {useDisplayStore} from '@/stores/displayStore'
+
+const displayStore = useDisplayStore()
 
 const drawerStore = useDrawerStore()
 // const drawer = ref(false);
-console.log('this is the value of the store', drawerStore.drawer)
+console.log('this is the value of the sm', displayStore.changeView)
 
 const dothis = () => {
+  
   drawerStore.drawer = !drawerStore.drawer
   console.log('hiiii', drawerStore.drawer)
 }

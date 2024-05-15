@@ -1,12 +1,26 @@
 <script setup>
 import { ref, computed} from 'vue';
+import { useDisplayStore } from '@/stores/displayStore';
 import image1 from '../assets/image1.jpg';
 import image2 from "../assets/image2.jpg";
 import image3 from "../assets/image3.jpg";
 import image4 from "../assets/image4.jpg";
 import image5 from "../assets/image5.jpg";
 import image6 from "../assets/image6.jpg";
- const cardsPerView = ref(3)
+const displayStore = useDisplayStore()
+
+
+ const cardsPerView = computed(()=>{
+   if (displayStore.changeView){
+     return 1
+   }
+   
+   else {
+     return 3
+   }
+ })
+
+
 const  scrollIndex = ref(0)
 const show = ref(false)
 
@@ -61,7 +75,7 @@ const show = ref(false)
     
         <TransitionGroup name="fade" class="container" >
           
-            <v-col  class="pa-10" :key="i" v-for="(item, i) in visibleCards" cols="4" >
+            <v-col  class="pa-10" :key="i" v-for="(item, i) in visibleCards" cols="12" md="4" >
               
      <v-card  class="mx-auto" elevation="12" max-width="300" >
     

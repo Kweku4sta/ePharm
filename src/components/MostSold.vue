@@ -45,7 +45,7 @@ const items = [
 
 
 <template>
-    <v-container class=" bg-red-accent-4 w-100">
+    <v-container class=" bg-transparent w-100">
         <v-row  class="">
             <v-col cols="12"   class="">
                 <v-card class="bg-transparent ">

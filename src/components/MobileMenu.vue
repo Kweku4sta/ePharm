@@ -1,11 +1,18 @@
-<template v-if="displayStore.changeView">
+<template v-if="">
         <v-navigation-drawer
           v-model="drawerStore.drawer"
           :temporary="drawerStore.drawer"
-          class="bg-red-accent-4 z-10"
-          
+          class="bg-deep-purple z-10"
+      
         >
-         
+        <v-list class="d-flex bg-transparent flex-column">
+            <v-list-item title="Home" value="home"/>
+            <v-list-item title="About" value="about"/>
+            <v-list-item title="Service" value="service"/>
+            <v-list-item title="Contact" value="contact"/>
+            <v-list-item title="GHS 100.00" />
+          </v-list>
+          
 
           <template v-slot:append>
           <div class="pa-2">
@@ -44,6 +51,6 @@
             value: 'buzz',
           },
         ])
-        console.log(displayStore.changeView)
+        console.log(displayStore.mobile, 'this is the value of the changeView')
 
   </script>

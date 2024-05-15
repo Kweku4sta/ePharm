@@ -9,7 +9,7 @@
     <!-- <v-main> -->
       <router-view />
     <!-- </v-main> -->
-    <!-- <ApplicationFooter/> -->
+    <ApplicationFooter/>
   </v-app>
 </template>
 
