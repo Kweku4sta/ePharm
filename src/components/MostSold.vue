@@ -67,8 +67,8 @@ const items = [
                                     </div>
                                     <v-card-actions class="mx-auto justify-centre">
                                         <!-- <v-btn color="orange" icon="mdi-cart" ></v-btn> -->
-                                        <v-btn size="small"  class="m-n2 bg-blue"> Add to Cart</v-btn>
-                                        <v-btn size="small"   class="m-n2 bg-blue"> Details {{  }} {{  }}</v-btn>
+                                        <v-btn size="small"  class="m-n2 bg-blue" > Add to Cart</v-btn>
+                                        <v-btn size="small"   class="m-n2 bg-blue"  to="/drug/"> Details {{  }} {{  }}</v-btn>
                         
                                     </v-card-actions>
                                 </div>
