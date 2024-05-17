@@ -11,19 +11,42 @@ const toggle2 = () => {
     selection1.value = false
     selection2.value = !selection2.value
 
-  const  tags =  [
-        'Work',
+  
+}
+const  tags =  [
+        'Pain killer',
         'Home Improvement',
         'Vacation',
         'Food',
-        'Drawers',
-        'Shopping',
-        'Art',
-        'Tech',
+        'Creative Writing',
+      ]
+ console.log(tags)
+
+
+ const categories =  [
+        'transquilizers',
+        'Home Improvement',
         'Creative Writing',
       ]
 
+
+const isCategory =  ref(true)
+const isTags =  ref(false)
+const toggleCategory = () => {
+    if(isTags.value){
+        isTags.value = false
+        isCategory.value = true
+    
+    }
+     
 }
+const toggleTag = () => {
+    if(isCategory.value){
+        isCategory.value = false
+        isTags.value = true
+    }
+}
+  
 
 
 </script>
@@ -36,11 +59,11 @@ const toggle2 = () => {
     <v-container class=" bg-transparent w-100" fluid>
   <v-row>
 
-<v-col cols="6">
+<v-col cols="6" class="mt-16">
     <v-hover v-slot="{isHovering, props}">
     <v-expand-x-transition mode="out-in">
  <v-card class="bg-transparent">
-    <v-img class="rounded transition-fast-in-fast-out" height="125" :src="image1"cover :width="300" v-bind="props">
+    <v-img class="rounded transition-fast-in-fast-out" height="125" :src="image1" cover :width="300" v-bind="props">
     <v-expand-transition>
         <div v-if="isHovering" class="d-flex transition-fast-in-fast-out bg-orange-darken-2 v-card--reveal text-h2 flex-column" style="height: 100%;">
     <div class="d-flex flex-row">
@@ -73,14 +96,33 @@ const toggle2 = () => {
     <v-sheet
     class="mx-auto"
     elevation="10"
-    max-width="300"
+    :max-width="$vuetify.display.mdAndBelow ? 300 : 500"
     rounded="xl"
+    :ml="$vuetify.display.mdAndDown ? 0 : n3"
   >
+  <v-sheet
+      class="pa-3 bg-primary text-right"
+      rounded="t-xl"
+    >
+    <v-chip-group
+        selected-class="bg-red-accent-4"
+        column
+      >
+        <v-chip @click="toggleCategory">
+         categories
+        </v-chip>
+        <v-chip @click="toggleTag"  >
+         tags
+        </v-chip>
+      </v-chip-group>
+    </v-sheet>
+
    
-    <div class="pa-4">
+    <div class="pa-2 bg-white">
       <v-chip-group
         selected-class="text-primary"
         column
+        v-if="isCategory"
       >
         <v-chip
           v-for="tag in tags"
@@ -89,9 +131,27 @@ const toggle2 = () => {
           {{ tag }}
         </v-chip>
       </v-chip-group>
+      <v-chip-group
+        selected-class="text-primary"
+        column
+        v-if="isTags"
+      >
+        <v-chip
+          v-for="category in categories"
+          :key="category"
+        >
+          {{ category }}
+        </v-chip>
+      </v-chip-group>
     </div>
+    <v-sheet
+      class="pa-4 bg-red-accent-4"
+      rounded="b-xl"
+    >
+    <p class="text-caption">PRACK AND DAUGHTERS PHARMACY</p>
   </v-sheet>
-    
+  </v-sheet>
+
   </v-col>
 
   </v-row>
